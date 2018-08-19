@@ -176,7 +176,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "\033[0m\033[46m\033[37m\033[1m[libft]\033[40m\033[1m\033[37m done"
+	@echo "\033[1A\033[K\033[32;5;214m$@ => created \033[0m"
 
 %.o: $(SRC)/%.c
 	@echo "\033[0m\033[46m\033[37m\033[1m[libft]\033[40m\033[1m\033[37m making libft"

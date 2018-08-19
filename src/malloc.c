@@ -1,4 +1,4 @@
-# include "../includes/malloc.h"
+# include "../includes/prototypes.h"
 
 void    *malloc(size_t size) {
     size++;
