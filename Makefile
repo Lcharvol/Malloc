@@ -14,6 +14,8 @@ INC_DIR =	includes
 
 SRC =	malloc.c\
 		show_mem.c\
+		pages.c\
+		allocations.c\
 
 OBJ =	$(SRC:%.c=$(OBJ_DIR)/%.o)
 

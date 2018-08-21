@@ -11,10 +11,6 @@ void    print_page(t_page *page)
         ft_putstr(page->pageName);
         ft_putstr(": ");
         ft_printf("%p", page);
-        while(page->blocks[i])
-        {
-            i++;
-        }
         page = page->next;
     };
 }

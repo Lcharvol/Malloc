@@ -22,7 +22,7 @@ typedef struct		s_page
     int             start;
     size_t          size;
     char            *pageName;
-    int             *blocks;
+    t_block         *blocks;
     struct s_page    *next;
 }					t_page;
 typedef struct		s_env
@@ -37,5 +37,7 @@ void                free(void *ptr);
 void                *malloc(size_t size);
 void                *realloc(void *ptr, size_t size);
 void                show_alloc_mem();
+t_page              *create_page(char *name);
+void                *allocate_new_block(t_page *page, int size);
 
 #endif

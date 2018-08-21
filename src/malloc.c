@@ -3,20 +3,6 @@
 
 t_env s_env = {NULL, NULL, NULL};
 
-t_page   *create_page(char *name)
-{
-    t_page  *newPage;
-
-    
-    int newArray[100] = {};
-    newPage = mmap(0, sizeof(t_page), PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-    newPage->blocks = newArray;
-    newPage->pageName = name;
-    newPage->start = (int)&newPage;
-    newPage->next = NULL;
-    return newPage;
-}
-
 void    *malloc(size_t size) {
     if(!size) {
         return 0;
@@ -25,7 +11,7 @@ void    *malloc(size_t size) {
     {
         if(!s_env.tiny)
             s_env.tiny = create_page("TINY");
-        return mmap(0, size + 1, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+        return allocate_new_block(s_env.tiny, size);
     }
     if(size < SMALL) {
         if(!s_env.small)
