@@ -13,8 +13,10 @@ OBJ_DIR =	.obj
 INC_DIR =	includes
 
 SRC =	malloc.c\
+		show_mem.c\
 
 OBJ =	$(SRC:%.c=$(OBJ_DIR)/%.o)
+
 INC =	prototypes.h
 
 INCLUDE =	$(INC:%.h=$(INC_DIR)/%.h)
@@ -23,7 +25,7 @@ LIBFT =	libft
 
 .PHONY: clean fclean all re norme newline $(LIBFT)/libft.a
 
-.SILENT:
+# .SILENT:
 
 all: $(NAME)
 
