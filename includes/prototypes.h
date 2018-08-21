@@ -10,6 +10,13 @@
 # define SMALL 512
 # define LARGE 4000
 
+typedef struct		s_block
+{
+    int             value;
+    char            *address;
+}					t_block;
+
+
 typedef struct		s_page
 {
     int             start;

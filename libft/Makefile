@@ -21,7 +21,9 @@ ALL_CFLAGS = -Wall -Wextra $(CFLAGS)
 
 # Includes directories
 INC_PATH = includes/
-INCLUDES_FILES=  includes/libft.h
+INCLUDES_FILES=		includes/libft.h\
+					includes/ft_printf.h\
+				
 
 INCLUDES += $(addprefix -iquote , $(INC_PATH))
 
@@ -98,6 +100,17 @@ SRCS = src/write/ft_putchar.c \
 	  src/maths/abs.c \
 	  \
 	  src/map/map.c \
+	  \
+	  src/ft_printf/ft_printf.c\
+	  src/ft_printf/char.c\
+	  src/ft_printf/if_forest.c\
+	  src/ft_printf/long.c\
+	  src/ft_printf/number.c\
+	  src/ft_printf/other.c\
+	  src/ft_printf/params.c\
+	  src/ft_printf/pointer.c\
+	  src/ft_printf/string.c\
+	  src/ft_printf/unsigned.c\
 
 OBJ = ft_putchar.o \
 	  ft_putchar_fd.o \

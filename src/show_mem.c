@@ -9,11 +9,12 @@ void    print_page(t_page *page)
 
         i = 0;
         ft_putstr(page->pageName);
-        ft_putchar(':');
-        // while(page->blocks[i])
-        // {
-        //     i++;
-        // }
+        ft_putstr(": ");
+        ft_printf("%p", page);
+        while(page->blocks[i])
+        {
+            i++;
+        }
         page = page->next;
     };
 }
