@@ -1,9 +1,14 @@
 # include "../includes/prototypes.h"
 
-void    *allocate_new_block(t_page *page, int size)
+void    *allocate_new_block(t_container *container, int size)
 {
     int i;
 
     i = 0;
-    return mmap(0, size + 1, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+    while(i < BLOCKS_LENGTH)
+    {
+        i++;
+    }
+    return &container + BLOCKS_LENGTH;
+    return NULL;
 };

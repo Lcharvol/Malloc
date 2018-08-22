@@ -10,6 +10,8 @@
 # define SMALL 512
 # define LARGE 4000
 
+# define BLOCKS_LENGTH 128
+
 typedef struct		s_block
 {
     int             value;
@@ -17,27 +19,28 @@ typedef struct		s_block
 }					t_block;
 
 
-typedef struct		s_page
+typedef struct		s_container
 {
-    int             start;
-    size_t          size;
-    char            *pageName;
+    size_t          length;
+    char            *containerName;
     t_block         *blocks;
-    struct s_page    *next;
-}					t_page;
+    struct s_container    *next;
+}					t_container;
 typedef struct		s_env
 {
-    t_page          *tiny;
-    t_page          *small;
-    t_page          *large;
+    t_container          *tiny;
+    t_container          *small;
+    t_container          *large;
 }					t_env;
+
 extern t_env s_env;
 
 void                free(void *ptr);
 void                *malloc(size_t size);
 void                *realloc(void *ptr, size_t size);
-void                show_alloc_mem();
-t_page              *create_page(char *name);
-void                *allocate_new_block(t_page *page, int size);
+void                    show_alloc_mem();
+t_container              *create_container(size_t length, char *name);
+void                    *allocate_new_block(t_container *container, int size);
+t_container              *create_large(void);
 
 #endif
