@@ -2,7 +2,7 @@
 
 int main() {
 
-    // TINY
+    // TINY 1
     char *str = (char *)malloc(10);
     int i = 0;
 
@@ -11,6 +11,16 @@ int main() {
         i++;
     }
     str[i] = '\0';
+
+    // TINY 2
+    char *str3 = (char *)malloc(5);
+    i = 0;
+
+    while( i < 5) {
+        str3[i] = 'T';
+        i++;
+    }
+    str3[i] = '\0';
 
     //SMALL
 

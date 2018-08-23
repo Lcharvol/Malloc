@@ -12,18 +12,11 @@
 
 # define BLOCKS_LENGTH 128
 
-typedef struct		s_block
-{
-    int             value;
-    char            *address;
-}					t_block;
-
-
 typedef struct		s_container
 {
     size_t          length;
     char            *containerName;
-    t_block         *blocks;
+    size_t             blocks[BLOCKS_LENGTH];
     struct s_container    *next;
 }					t_container;
 typedef struct		s_env
