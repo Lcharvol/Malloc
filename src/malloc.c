@@ -10,7 +10,8 @@ void    *malloc(size_t size) {
     {
         if(!s_env.tiny)
             s_env.tiny = create_container(TINY * BLOCKS_LENGTH, "TINY");
-        return allocate_new_block(s_env.tiny, size);
+        return allocate_tiny(s_env.tiny);
+        // return &s_env.tiny[1];
     }
     if(size < SMALL) {
         if(!s_env.small)

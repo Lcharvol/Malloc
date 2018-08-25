@@ -1,7 +1,7 @@
 
 # include "../includes/prototypes.h"
 
-void    print_blocks(t_container *container)
+void    print_blocks_mem(t_container *container)
 {
     int i;
     int blockSize;
@@ -29,9 +29,9 @@ void    print_blocks(t_container *container)
         };
         i++;
     }
-}
+};
 
-void    print_container(t_container *container)
+void    print_container_mem(t_container *container)
 {
     while(container)
     {
@@ -41,26 +41,26 @@ void    print_container(t_container *container)
         ft_putstr(container->containerName);
         ft_putstr(": ");
         ft_printf("%p\n", container);
-        print_blocks(container);
+        print_blocks_mem(container);
         container = container->next;
     };
-}
+};
 
 void show_alloc_mem() {
     t_env       *env = &s_env;
 
     if(env->tiny)
-        print_container(env->tiny);
+        print_container_mem(env->tiny);
     else
         ft_putstr("TINY : NULL");
     ft_putchar('\n');
     if(env->small)
-        print_container(env->small);
+        print_container_mem(env->small);
     else
         ft_putstr("SMALL : NULL");
     ft_putchar('\n');
     if(env->large)
-        print_container(env->large);
+        print_container_mem(env->large);
     else
         ft_putstr("LARGE : NULL");
     ft_putchar('\n');

@@ -14,6 +14,7 @@ INC_DIR =	includes
 
 SRC =	malloc.c\
 		show_mem.c\
+		show_content.c\
 		container.c\
 		allocations.c\
 
