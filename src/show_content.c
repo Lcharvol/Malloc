@@ -5,7 +5,6 @@ void    print_blocks_content(t_container *container)
 {
     int i;
     int isIn;
-    int start;
 
     i = 0;
     isIn = 0;

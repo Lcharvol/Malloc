@@ -11,7 +11,7 @@
 //     return 0;
 // };
 
-void    *allocate_tiny(t_container *container)
+void    *allocate_tiny_and_small(t_container *container)
 {
     int i;
 

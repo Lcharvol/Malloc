@@ -7,7 +7,7 @@
 #include "../libft/includes/libft.h"
 
 # define                TINY 16
-# define                SMALL 512
+# define                SMALL 4096
 # define                LARGE 4000
 
 # define                BLOCKS_LENGTH 128
@@ -34,7 +34,7 @@ void                    *realloc(void *ptr, size_t size);
 void                    show_alloc_mem();
 void                    show_alloc_content();
 t_container             *create_container(size_t length, char *name);
-void                    *allocate_tiny(t_container *container);
+void                    *allocate_tiny_and_small(t_container *container);
 t_container             *create_large(void);
 
 #endif
