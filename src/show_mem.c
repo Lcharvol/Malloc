@@ -5,30 +5,21 @@ void    print_blocks_mem(t_container *container)
 {
     int i;
     int blockSize;
-    int isIn;
     int start;
 
     i = 0;
-    isIn = 0;
     blockSize = ft_strcmp(container->containerName, "TINY") == 0 ? TINY : SMALL; 
     while(i < BLOCKS_LENGTH)
     {
-        if(container->blocks[i] == 2)
+        if(container->blocks[i] != 0)
         {
-            isIn = isIn == 0 ? 1 : 0;
-            if(isIn == 1)
-            {
-                start = i;
-                ft_printf("%p - ", container + (i * blockSize));
-            }
-            else
-            {
-                ft_printf("%p : %d ", container + (i * blockSize), i - start + 1);
-                ft_printf("octets\n");
-            };
+            start = i;
+            ft_printf(" %p - ", container + (i * blockSize) + sizeof(t_container));
+            ft_printf("%p : %d octets\n", container + blockSize +
+                (i * blockSize) + sizeof(t_container), blockSize);
         };
         i++;
-    }
+    };
 };
 
 void    print_container_mem(t_container *container)
@@ -46,6 +37,20 @@ void    print_container_mem(t_container *container)
     };
 };
 
+void    print_large_mem(t_large *large)
+{
+    while(large->next)
+    {
+        ft_printf("LARGE: %p\n", large);
+        ft_printf(" %p - ", large + sizeof(t_large));
+        ft_printf(" %p : %d octets\n", large + sizeof(t_large) + large->length, large->length);
+        large = large->next;
+    };
+    ft_printf("LARGE: %p\n", large);
+    ft_printf(" %p - ", large + sizeof(t_large));
+    ft_printf(" %p : %d octets\n", large + sizeof(t_large) + large->length, large->length);
+};
+
 void show_alloc_mem() {
     t_env       *env = &s_env;
 
@@ -60,7 +65,7 @@ void show_alloc_mem() {
         ft_putstr("SMALL : NULL");
     ft_putchar('\n');
     if(env->large)
-        print_container_mem(env->large);
+        print_large_mem(env->large);
     else
         ft_putstr("LARGE : NULL");
     ft_putchar('\n');

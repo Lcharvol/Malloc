@@ -4,7 +4,6 @@ int main() {
 
     // TINY 1
     char *str1 = (char *)malloc(16);
-    ft_printf("str: %s \n", str1);
     int i = 0;
 
     while( i < 16) {
@@ -34,20 +33,35 @@ int main() {
     }
     str2[i] = '\0';
 
-    // //LARGE
+    // LARGE 1
 
-    // char *str3 = (char *)malloc(4096);
-    // i = 0;
+    char *str4 = (char *)malloc(4097);
+    i = 0;
 
-    // while( i < 4096) {
-    //     str3[i] = 'S';
-    //     i++;
-    // }
-    // str3[i] = '\0';
+    while( i < 4097) {
+        str4[i] = 'L';
+        i++;
+    }
+    str4[i] = '\0';
+
+    // LARGE 2
+
+    char *str5 = (char *)malloc(4097);
+    i = 0;
+
+    while( i < 4097) {
+        str5[i] = 'B';
+        i++;
+    }
+    str5[i] = '\0';
 
     // SHOW ALLOCATE MEMORY
-    // ft_printf("str2: %s \n", str2);
-    // ft_printf("str3: %s \n", str3);
-    show_alloc_content();
+
+    show_alloc_mem();
+
+    // SHOW ALLOCATE CONTENT
+
+    // show_alloc_content();
+
     return 0;
 }

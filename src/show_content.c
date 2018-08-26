@@ -31,6 +31,16 @@ void    print_container_content(t_container *container)
     };
 };
 
+void    print_large_content(t_large *large)
+{
+    while(large->next)
+    {
+        ft_printf("LARGE: %p\n%s\n", large, large + 1);
+        large = large->next;
+    };
+    ft_printf("LARGE: %p\n%s\n", large, large + 1);
+};
+
 void show_alloc_content()
 {
     t_env       *env = &s_env;
@@ -46,7 +56,7 @@ void show_alloc_content()
         ft_putstr("SMALL : NULL");
     ft_putchar('\n');
     if(env->large)
-        print_container_content(env->large);
+        print_large_content(env->large);
     else
         ft_putstr("LARGE : NULL");
     ft_putchar('\n');

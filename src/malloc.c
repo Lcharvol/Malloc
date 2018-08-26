@@ -18,6 +18,6 @@ void    *malloc(size_t size) {
         return allocate_tiny_and_small(s_env.small);
     }
     if(!s_env.large)
-        s_env.large = create_large();
-    return s_env.large;
+        s_env.large = create_large(size);
+    return allocate_large(s_env.large, size);
 }
