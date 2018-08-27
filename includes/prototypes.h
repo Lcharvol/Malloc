@@ -14,7 +14,7 @@
 typedef struct          s_container
 {
     size_t              length;
-    int              blocks[BLOCKS_LENGTH];
+    int                 blocks[BLOCKS_LENGTH];
     char                *containerName;
     struct s_container  *next;
 }					    t_container;

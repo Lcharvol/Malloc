@@ -5,7 +5,6 @@ void    print_blocks_mem(t_container *container)
 {
     int i;
     int blockSize;
-    int start;
 
     i = 0;
     blockSize = ft_strcmp(container->containerName, "TINY") == 0 ? TINY : SMALL; 
@@ -13,10 +12,8 @@ void    print_blocks_mem(t_container *container)
     {
         if(container->blocks[i] != 0)
         {
-            start = i;
-            ft_printf(" %p - ", container + (i * blockSize) + sizeof(t_container));
-            ft_printf("%p : %d octets\n", container + blockSize +
-                (i * blockSize) + sizeof(t_container), blockSize);
+            ft_printf(" %02X \e[02m- \e[0m", (void *)container + (i * blockSize) + sizeof(t_container));
+            ft_printf("%02X : \e[32m %d octets \e[00m\n", (void *)container + (i * TINY) + sizeof(t_container) + blockSize, blockSize);
         };
         i++;
     };
@@ -29,9 +26,7 @@ void    print_container_mem(t_container *container)
         int i;
 
         i = 0;
-        ft_putstr(container->containerName);
-        ft_putstr(": ");
-        ft_printf("%p\n", container);
+        ft_printf("\n\e[33m%s: \e[0m%02X\n\n", container->containerName, container);
         print_blocks_mem(container);
         container = container->next;
     };
@@ -41,14 +36,14 @@ void    print_large_mem(t_large *large)
 {
     while(large->next)
     {
-        ft_printf("LARGE: %p\n", large);
-        ft_printf(" %p - ", large + sizeof(t_large));
-        ft_printf(" %p : %d octets\n", large + sizeof(t_large) + large->length, large->length);
+        ft_printf("\n\e[33mLARGE\e[0m: %p\n\n", large);
+        ft_printf(" %02X \e[02m- \e[0m", (void *)large + sizeof(t_large));
+        ft_printf("%02X : \e[32m %d octets \e[00m\n", (void *)large + sizeof(t_large) + large->length, large->length);
         large = large->next;
     };
-    ft_printf("LARGE: %p\n", large);
-    ft_printf(" %p - ", large + sizeof(t_large));
-    ft_printf(" %p : %d octets\n", large + sizeof(t_large) + large->length, large->length);
+    ft_printf("\n\e[33mLARGE\e[0m: %p\n\n", large);
+    ft_printf(" %02X \e[02m- \e[0m", (void *)large + sizeof(t_large));
+    ft_printf("%02X : \e[32m %d octets \e[00m\n", (void *)large + sizeof(t_large) + large->length, large->length);
 };
 
 void show_alloc_mem() {

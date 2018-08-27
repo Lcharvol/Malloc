@@ -46,14 +46,24 @@ int main() {
 
     // LARGE 2
 
-    char *str5 = (char *)malloc(4097);
+    char *str5 = (char *)malloc(10000);
     i = 0;
 
-    while( i < 4097) {
+    while( i < 10000) {
         str5[i] = 'B';
         i++;
     }
     str5[i] = '\0';
+
+    i = 0;
+    char *str6;
+    while(i < 1200)
+    {
+        str6 = (char *)malloc(10);
+        str6[0] = 'w';
+        str6[1] = '\0';
+        i++;
+    }
 
     // SHOW ALLOCATE MEMORY
 

@@ -1,5 +1,17 @@
 # include "../includes/prototypes.h"
 
+t_container *add_new_tiny_or_small(t_container *container)
+{
+    t_container *newContainer;
+    size_t size;
+
+    size = ft_strcmp(container->containerName, "TINY") ? TINY * BLOCKS_LENGTH : SMALL*BLOCKS_LENGTH;
+    newContainer = create_container(size, container->containerName);
+    newContainer->next = NULL;
+    container->next = newContainer;
+    return container;
+};
+
 void    *allocate_tiny_and_small(t_container *container)
 {
     int i;
@@ -10,11 +22,15 @@ void    *allocate_tiny_and_small(t_container *container)
         if(container->blocks[i] == 0)
         {
             container->blocks[i] = 1;
-            return &container[i + 1];
+            return &container[2 + 1];
         };
         i++;
     }
-    return NULL;
+    if(container->next == NULL)
+    {
+        allocate_tiny_and_small(add_new_tiny_or_small(container));
+    }
+    return allocate_tiny_and_small(container->next);
 };
 
 t_large *add_new_large(t_large *large, size_t size)
