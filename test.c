@@ -55,6 +55,7 @@ int main() {
     }
     str5[i] = '\0';
     free(str4);
+    free(str5);
 
     // i = 0;
     // char *str6;

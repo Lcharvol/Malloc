@@ -34,16 +34,13 @@ void    print_container_mem(t_container *container)
 
 void    print_large_mem(t_large *large)
 {
-    while(large->next)
+    while(large)
     {
         ft_printf("\n\e[33mLARGE\e[0m: %p\n\n", large);
         ft_printf(" %02X \e[02m- \e[0m", (void *)large + sizeof(t_large));
         ft_printf("%02X : \e[32m %d octets \e[00m\n", (void *)large + sizeof(t_large) + large->length, large->length);
         large = large->next;
     };
-    ft_printf("\n\e[33mLARGE\e[0m: %p\n\n", large);
-    ft_printf(" %02X \e[02m- \e[0m", (void *)large + sizeof(t_large));
-    ft_printf("%02X : \e[32m %d octets \e[00m\n", (void *)large + sizeof(t_large) + large->length, large->length);
 };
 
 void show_alloc_mem() {
