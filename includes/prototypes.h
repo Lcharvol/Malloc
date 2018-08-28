@@ -42,6 +42,7 @@ void                    show_alloc_mem();
 void                    show_alloc_content();
 void                    *allocate_tiny_and_small(t_container *container);
 void                    *allocate_large(t_large *container, size_t size);
+void                    print_alloc_summ(t_env *env);
 t_large                 *create_large(size_t length);
 t_container             *create_container(size_t length, char *name);
 

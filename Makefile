@@ -18,6 +18,7 @@ SRC =	malloc.c\
 		show_content.c\
 		container.c\
 		allocations.c\
+		print_alloc_summ.c\
 
 OBJ =	$(SRC:%.c=$(OBJ_DIR)/%.o)
 
