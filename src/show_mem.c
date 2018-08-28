@@ -12,8 +12,8 @@ void    print_blocks_mem(t_container *container)
     {
         if(container->blocks[i] != 0)
         {
-            ft_printf(" %02X \e[02m- \e[0m", (void *)container + (i * blockSize) + sizeof(t_container));
-            ft_printf("%02X : \e[32m %d octets \e[00m\n", (void *)container + (i * TINY) + sizeof(t_container) + blockSize, blockSize);
+            ft_printf(" %p \e[02m- \e[0m", (void *)container + (i * blockSize) + sizeof(t_container));
+            ft_printf("%p : \e[32m %d octets \e[00m\n", (void *)container + (i * TINY) + sizeof(t_container) + blockSize, blockSize);
         };
         i++;
     };
@@ -23,7 +23,7 @@ void    print_container_mem(t_container *container)
 {
     while(container)
     {
-        ft_printf("\n\e[35m%s : \e[0m%02X\n\n", container->containerName, container);
+        ft_printf("\n\e[35m%s : \e[0m%p\n\n", container->containerName, container);
         print_blocks_mem(container);
         container = container->next;
     };
@@ -34,8 +34,8 @@ void    print_large_mem(t_large *large)
     while(large)
     {
         ft_printf("\n\e[35mLARGE\e[0m: %p\n\n", large);
-        ft_printf(" %02X \e[02m- \e[0m", (void *)large + sizeof(t_large));
-        ft_printf("%02X : \e[32m%d octets \e[00m\n", (void *)large + sizeof(t_large) + large->length, large->length);
+        ft_printf(" %p \e[02m- \e[0m", (void *)large + sizeof(t_large));
+        ft_printf("%p : \e[32m%d octets \e[00m\n", (void *)large + sizeof(t_large) + large->length, large->length);
         large = large->next;
     };
 };

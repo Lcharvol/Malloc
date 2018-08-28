@@ -29,13 +29,14 @@ void    *allocate_tiny_and_small(t_container *container)
 
     i = 0;
     blockSize = ft_strcmp("TINY", container->containerName) == 0 ? TINY : SMALL;
-    while(i++ < BLOCKS_LENGTH)
+    while(i < BLOCKS_LENGTH)
     {
         if(container->blocks[i] == 0)
         {
             container->blocks[i] = 1;
             return (void *)container + sizeof(t_container) + (i * blockSize);
         };
+        i++;
     }
     if(container->next == NULL)
     {

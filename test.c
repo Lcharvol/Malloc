@@ -10,28 +10,27 @@ int main() {
         i++;
     }
     str1[i] = '\0';
-    free(str1);
 
     // TINY 2
-    char *str3 = (char *)malloc(5);
+    char *str2 = (char *)malloc(5);
     i = 0;
 
     while( i < 5) {
-        str3[i] = 'T';
-        i++;
-    }
-    str3[i] = '\0';
-
-    //SMALL
-
-    char *str2 = (char *)malloc(17);
-    i = 0;
-
-    while( i < 17) {
-        str2[i] = 'S';
+        str2[i] = 'T';
         i++;
     }
     str2[i] = '\0';
+
+    //SMALL
+
+    char *str3 = (char *)malloc(17);
+    i = 0;
+
+    while( i < 17) {
+        str3[i] = 'S';
+        i++;
+    }
+    str3[i] = '\0';
 
     // LARGE 1
 
@@ -56,16 +55,17 @@ int main() {
     str5[i] = '\0';
     // free(str4);
     // free(str5);
+    free(str2);
 
     i = 0;
     char *str6;
-    while(i < 200)
-    {
-        str6 = (char *)malloc(10);
-        str6[0] = 'w';
-        str6[1] = '\0';
-        i++;
-    }
+    // while(i < 200)
+    // {
+    //     str6 = (char *)malloc(10);
+    //     str6[0] = 'w';
+    //     str6[1] = '\0';
+    //     i++;
+    // }
 
     // SHOW ALLOCATE MEMORY
 

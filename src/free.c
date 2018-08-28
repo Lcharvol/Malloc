@@ -1,31 +1,22 @@
 # include "../includes/prototypes.h"
 
-int     is_large_ptr(void *ptr)
+
+
+void     free_tiny_or_small(void *ptr)
 {
-    t_large *large = s_env.large;
-    int pos;
+    int ptrPos;
 
-    pos = 0;
-    while(large)
-    {
-        if((large + 1) == ptr)
-            return pos;
-        large = large->next;
-        pos++;
-    };
-    if((large + 1) == ptr)
-        return pos;
-    return -1;
-}
-
-void     *free_tiny_or_small(void *ptr)
-{
-
+    if((ptrPos = get_ptr_pos_in_container(ptr, s_env.tiny)) != -1) {
+        ft_printf("FIND TINY AT %d POS\n", ptrPos);
+    }
+    else{
+        ptrPos = get_ptr_pos_in_container(ptr, s_env.small);
+        ft_printf("FIND SMALL AT %d POS\n", ptrPos);
+    }
 };
 
-void    *free_large(int pos, void *ptr)
+void    free_large(int pos, void *ptr)
 {
-    t_large *large = s_env.large;
     size_t  length;
 
     length = s_env.large[pos].length;
@@ -39,6 +30,7 @@ void    *free_large(int pos, void *ptr)
 void    free(void *ptr)
 {
     int largePos;
+
     if((largePos = is_large_ptr(ptr)) != -1)
         free_large(largePos, ptr);
     else
