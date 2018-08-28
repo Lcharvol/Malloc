@@ -13,6 +13,7 @@ OBJ_DIR =	.obj
 INC_DIR =	includes
 
 SRC =	malloc.c\
+		free.c\
 		show_mem.c\
 		show_content.c\
 		container.c\

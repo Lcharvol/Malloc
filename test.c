@@ -1,37 +1,37 @@
 #include "./includes/prototypes.h"
 
 int main() {
-
-    // TINY 1
-    char *str1 = (char *)malloc(16);
     int i = 0;
+    // // TINY 1
+    // char *str1 = (char *)malloc(16);
 
-    while( i < 16) {
-        str1[i] = 'T';
-        i++;
-    }
-    str1[i] = '\0';
+    // while( i < 16) {
+    //     str1[i] = 'T';
+    //     i++;
+    // }
+    // str1[i] = '\0';
+    // free(str1);
 
-    // TINY 2
-    char *str3 = (char *)malloc(5);
-    i = 0;
+    // // TINY 2
+    // char *str3 = (char *)malloc(5);
+    // i = 0;
 
-    while( i < 5) {
-        str3[i] = 'T';
-        i++;
-    }
-    str3[i] = '\0';
+    // while( i < 5) {
+    //     str3[i] = 'T';
+    //     i++;
+    // }
+    // str3[i] = '\0';
 
-    //SMALL
+    // //SMALL
 
-    char *str2 = (char *)malloc(17);
-    i = 0;
+    // char *str2 = (char *)malloc(17);
+    // i = 0;
 
-    while( i < 17) {
-        str2[i] = 'S';
-        i++;
-    }
-    str2[i] = '\0';
+    // while( i < 17) {
+    //     str2[i] = 'S';
+    //     i++;
+    // }
+    // str2[i] = '\0';
 
     // LARGE 1
 
@@ -54,16 +54,17 @@ int main() {
         i++;
     }
     str5[i] = '\0';
+    free(str4);
 
-    i = 0;
-    char *str6;
-    while(i < 1200)
-    {
-        str6 = (char *)malloc(10);
-        str6[0] = 'w';
-        str6[1] = '\0';
-        i++;
-    }
+    // i = 0;
+    // char *str6;
+    // while(i < 200)
+    // {
+    //     str6 = (char *)malloc(10);
+    //     str6[0] = 'w';
+    //     str6[1] = '\0';
+    //     i++;
+    // }
 
     // SHOW ALLOCATE MEMORY
 

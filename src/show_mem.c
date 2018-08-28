@@ -26,7 +26,7 @@ void    print_container_mem(t_container *container)
         int i;
 
         i = 0;
-        ft_printf("\n\e[33m%s: \e[0m%02X\n\n", container->containerName, container);
+        ft_printf("\n\e[33m%s : \e[0m%02X\n\n", container->containerName, container);
         print_blocks_mem(container);
         container = container->next;
     };
@@ -52,16 +52,13 @@ void show_alloc_mem() {
     if(env->tiny)
         print_container_mem(env->tiny);
     else
-        ft_putstr("TINY : NULL");
-    ft_putchar('\n');
+        ft_putstr("\n\e[33mTINY\e[0m : NULL\n");
     if(env->small)
         print_container_mem(env->small);
     else
-        ft_putstr("SMALL : NULL");
-    ft_putchar('\n');
+        ft_putstr("\n\e[33mSMALL\e[0m : NULL\n");
     if(env->large)
         print_large_mem(env->large);
     else
-        ft_putstr("LARGE : NULL");
-    ft_putchar('\n');
+        ft_putstr("\n\e[33mLARGE\e[0m : NULL\n");
 };

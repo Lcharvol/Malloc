@@ -12,27 +12,6 @@ t_container *add_new_tiny_or_small(t_container *container)
     return container;
 };
 
-void    *allocate_tiny_and_small(t_container *container)
-{
-    int i;
-
-    i = 0;
-    while(i < BLOCKS_LENGTH)
-    {
-        if(container->blocks[i] == 0)
-        {
-            container->blocks[i] = 1;
-            return &container[2 + 1];
-        };
-        i++;
-    }
-    if(container->next == NULL)
-    {
-        allocate_tiny_and_small(add_new_tiny_or_small(container));
-    }
-    return allocate_tiny_and_small(container->next);
-};
-
 t_large *add_new_large(t_large *large, size_t size)
 {
     t_large *newLarge;
@@ -40,7 +19,29 @@ t_large *add_new_large(t_large *large, size_t size)
     newLarge = create_large(size);
     newLarge->taken = 1;
     large->next = newLarge;
-    return &newLarge[1];
+    return newLarge + 1;
+};
+
+void    *allocate_tiny_and_small(t_container *container)
+{
+    int i;
+    int blockSize;
+
+    i = 0;
+    blockSize = ft_strcmp("TINY", container->containerName) == 0 ? TINY : SMALL;
+    while(i++ < BLOCKS_LENGTH)
+    {
+        if(container->blocks[i] == 0)
+        {
+            container->blocks[i] = 1;
+            return (void *)container + sizeof(t_container) + (i * blockSize);
+        };
+    }
+    if(container->next == NULL)
+    {
+        allocate_tiny_and_small(add_new_tiny_or_small(container));
+    }
+    return allocate_tiny_and_small(container->next);
 };
 
 void    *allocate_large(t_large *large, size_t size)
