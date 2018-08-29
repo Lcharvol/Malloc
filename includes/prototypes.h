@@ -43,6 +43,8 @@ void                    show_alloc_content();
 void                    *allocate_tiny_and_small(t_container *container);
 void                    *allocate_large(t_large *container, size_t size);
 void                    print_alloc_summ(t_env *env);
+void                    free_large(int pos, void *ptr);
+void                    free_tiny_or_small(void *ptr);
 
 int                     is_large_ptr(void *ptr);
 int                     get_ptr_pos_in_container(void *ptr, t_container *container);

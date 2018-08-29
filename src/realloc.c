@@ -11,15 +11,30 @@ void                    *realloc(void *ptr, size_t size)
         return NULL;
     if((ptrPos = is_large_ptr(ptr)) != -1)
     {
-        ft_printf("REALLOC IN LARGE");
+        if(size < s_env.large[ptrPos].length)
+            return ptr;
+        free_large(ptrPos, ptr);
+        return malloc(size);
     }
     else if((ptrPos = get_ptr_pos_in_container(ptr, s_env.tiny)) != -1)
     {
-        ft_printf("REALLOC IN TINY");
+        if(size > TINY)
+        {
+            free_tiny_or_small(ptr);
+            return malloc(size);
+        }
+        else
+            return ptr;
     }
     else if((ptrPos = get_ptr_pos_in_container(ptr, s_env.small)) != -1)
     {
-        ft_printf("REALLOC IN SMALL");
+       if(size > SMALL)
+        {
+            free_tiny_or_small(ptr);
+            return malloc(size);
+        }
+        else
+            return ptr;
     };
     return NULL;
 };

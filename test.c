@@ -64,7 +64,7 @@ int main() {
 
     // REALLOC
 
-    str4 = realloc(str4, 1500);
+    str3 = realloc(str3, 15000);
     i = 0;
     char *str6;
     // while(i < 200)
