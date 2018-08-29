@@ -1,18 +1,40 @@
 # include "../includes/prototypes.h"
 
+void    delete_ptr_in_container(int ptrPos, t_container *container)
+{
+    int i;
+    int blockSize;
+    t_container *tmp;
 
+    i = 0;
+    tmp = container;
+    blockSize = ft_strcmp(container->containerName, "TINY") == 0 ? TINY : SMALL; 
+    while(container)
+    {
+        while(i < BLOCKS_LENGTH)
+        {
+            if(i == ptrPos)
+                container->blocks[i % BLOCKS_LENGTH] = 0;
+            i++;
+        }
+        container = container->next;
+    };
+    container = tmp;
+};
 
 void     free_tiny_or_small(void *ptr)
 {
     int ptrPos;
 
-    if((ptrPos = get_ptr_pos_in_container(ptr, s_env.tiny)) != -1) {
-        ft_printf("FIND TINY AT %d POS\n", ptrPos);
-    }
-    else{
+    if((ptrPos = get_ptr_pos_in_container(ptr, s_env.tiny)) != -1)
+        delete_ptr_in_container(ptrPos, s_env.tiny);
+    else
+    {
         ptrPos = get_ptr_pos_in_container(ptr, s_env.small);
-        ft_printf("FIND SMALL AT %d POS\n", ptrPos);
-    }
+        delete_ptr_in_container(ptrPos, s_env.small);
+    };
+    s_env.tiny = free_empty_container(s_env.tiny);
+    s_env.small = free_empty_container(s_env.small);
 };
 
 void    free_large(int pos, void *ptr)

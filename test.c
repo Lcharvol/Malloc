@@ -32,30 +32,35 @@ int main() {
     }
     str3[i] = '\0';
 
-    // LARGE 1
+    // // LARGE 1
 
-    char *str4 = (char *)malloc(4097);
-    i = 0;
+    // char *str4 = (char *)malloc(4097);
+    // i = 0;
 
-    while( i < 4097) {
-        str4[i] = 'L';
-        i++;
-    }
-    str4[i] = '\0';
+    // while( i < 4097) {
+    //     str4[i] = 'L';
+    //     i++;
+    // }
+    // str4[i] = '\0';
 
-    // LARGE 2
+    // // LARGE 2
 
-    char *str5 = (char *)malloc(10000);
-    i = 0;
+    // char *str5 = (char *)malloc(10000);
+    // i = 0;
 
-    while( i < 10000) {
-        str5[i] = 'B';
-        i++;
-    }
-    str5[i] = '\0';
+    // while( i < 10000) {
+    //     str5[i] = 'B';
+    //     i++;
+    // }
+    // str5[i] = '\0';
+
+    // FREE
+
     // free(str4);
     // free(str5);
+    free(str1);
     free(str2);
+    free(str3);
 
     i = 0;
     char *str6;
