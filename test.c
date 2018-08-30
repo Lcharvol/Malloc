@@ -32,16 +32,16 @@ int main() {
     // }
     // str3[i] = '\0';
 
-    // // LARGE 1
+    // LARGE 1
 
-    // char *str4 = (char *)malloc(4097);
-    // i = 0;
+    char *str4 = (char *)malloc(4097);
+    i = 0;
 
-    // while( i < 4097) {
-    //     str4[i] = 'L';
-    //     i++;
-    // }
-    // str4[i] = '\0';
+    while( i < 4097) {
+        str4[i] = 'L';
+        i++;
+    }
+    str4[i] = '\0';
 
     // LARGE 2
 
@@ -68,7 +68,7 @@ int main() {
     // str2 = realloc(str2, 15000);
     // str3 = realloc(str3, 100);
     // str4 = realloc(str4, 0);
-    str5 = realloc(str5, 400);
+    // str5 = realloc(str5, 400);
 
     // i = 0;
     // char *str6;
@@ -82,7 +82,7 @@ int main() {
 
     // SHOW ALLOCATE MEMORY
 
-    show_alloc_content();
+    show_alloc_mem();
 
     // SHOW ALLOCATE CONTENT
 

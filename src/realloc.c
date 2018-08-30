@@ -7,7 +7,6 @@ void                    *realloc_if_allocated(void *ptr, t_container *container,
 
     if((ptrPos = get_ptr_pos_in_container(ptr, container)) != -1)
     {
-        ft_printf("PTR POS: %d\n", ptrPos);
         if(size > blockSize)
         {
             tmp = ft_memcpy(malloc(size), ptr, size);
@@ -24,13 +23,11 @@ void                    *realloc(void *ptr, size_t size)
     int                 ptrPos;
     void                *tmp;
 
-    ft_printf("REALLOC: %d\n", size);
     ptrPos = 0;
     if(!ptr)
         return malloc(size);
     if((ptrPos = is_large_ptr(ptr)) != -1)
     {
-        ft_printf("PTR POS: %d\n", ptrPos);
         if((size < s_env.large[ptrPos].length) & (size > SMALL))
             return ptr;
         tmp = ft_memcpy(malloc(size), ptr, size);

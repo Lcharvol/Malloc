@@ -30,6 +30,8 @@ void     free_tiny_or_small(void *ptr)
         delete_ptr_in_container(ptrPos, s_env.tiny);
     else if((ptrPos = get_ptr_pos_in_container(ptr, s_env.small)) != -1)
         delete_ptr_in_container(ptrPos, s_env.small);
+    else
+        return;
     s_env.tiny = free_empty_container(s_env.tiny);
     s_env.small = free_empty_container(s_env.small);
 };
@@ -50,7 +52,6 @@ void    free(void *ptr)
 {
     int largePos;
 
-    ft_printf("FREE\n");
     if((largePos = is_large_ptr(ptr)) != -1)
         free_large(largePos, ptr);
     else
