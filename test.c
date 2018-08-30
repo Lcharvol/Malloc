@@ -68,7 +68,7 @@ int main() {
     // str2 = realloc(str2, 15000);
     // str3 = realloc(str3, 100);
     // str4 = realloc(str4, 0);
-    str5 = realloc(str5, 4095);
+    str5 = realloc(str5, 400);
 
     // i = 0;
     // char *str6;
@@ -82,7 +82,7 @@ int main() {
 
     // SHOW ALLOCATE MEMORY
 
-    show_alloc_mem();
+    show_alloc_content();
 
     // SHOW ALLOCATE CONTENT
 

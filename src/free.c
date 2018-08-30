@@ -50,10 +50,9 @@ void    free(void *ptr)
 {
     int largePos;
 
-    ft_printf("FREE ADDR: %p\n", &ptr);
+    ft_printf("FREE\n");
     if((largePos = is_large_ptr(ptr)) != -1)
         free_large(largePos, ptr);
     else
         free_tiny_or_small(ptr);
-    ft_printf("END OF FREE\n");
 };
