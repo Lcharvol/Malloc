@@ -4,8 +4,9 @@
 t_env s_env = {NULL, NULL, NULL};
 
 void    *malloc(size_t size) {
+    ft_printf("MALLOC: %d\n", size);
     if(!size)
-        return 0;
+        return NULL;
     if(size <= TINY)
     {
         if(!s_env.tiny)

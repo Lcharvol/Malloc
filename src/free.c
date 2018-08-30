@@ -28,11 +28,8 @@ void     free_tiny_or_small(void *ptr)
 
     if((ptrPos = get_ptr_pos_in_container(ptr, s_env.tiny)) != -1)
         delete_ptr_in_container(ptrPos, s_env.tiny);
-    else
-    {
-        ptrPos = get_ptr_pos_in_container(ptr, s_env.small);
+    else if((ptrPos = get_ptr_pos_in_container(ptr, s_env.small)) != -1)
         delete_ptr_in_container(ptrPos, s_env.small);
-    };
     s_env.tiny = free_empty_container(s_env.tiny);
     s_env.small = free_empty_container(s_env.small);
 };
@@ -53,10 +50,10 @@ void    free(void *ptr)
 {
     int largePos;
 
-    if(!ptr)
-        return;
+    ft_printf("FREE ADDR: %p\n", &ptr);
     if((largePos = is_large_ptr(ptr)) != -1)
         free_large(largePos, ptr);
     else
         free_tiny_or_small(ptr);
+    ft_printf("END OF FREE\n");
 };
