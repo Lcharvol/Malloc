@@ -24,8 +24,6 @@ void                    *realloc(void *ptr, size_t size)
     void                *tmp;
 
     ptrPos = 0;
-    if(!ptr)
-        return malloc(size);
     if((ptrPos = is_large_ptr(ptr)) != -1)
     {
         if((size < s_env.large[ptrPos].length) & (size > SMALL))
@@ -38,5 +36,5 @@ void                    *realloc(void *ptr, size_t size)
         return ptr;
     if((ptr = realloc_if_allocated(ptr, s_env.small, SMALL, size)) != NULL)
         return ptr;
-    return NULL;
+    return malloc(size);;
 };

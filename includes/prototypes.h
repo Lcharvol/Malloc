@@ -22,7 +22,6 @@ typedef struct          s_container
 typedef struct          s_large
 {
     size_t              length;
-    int                 taken;
     struct s_large  *next;
 }					    t_large;
 

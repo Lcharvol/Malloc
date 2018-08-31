@@ -23,7 +23,6 @@ t_large  *create_large(size_t length)
     length = ((length + sizeof(t_large) - 1) / getpagesize()) * getpagesize() + getpagesize();
     if((newLarge = mmap(0, length, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0)) == MAP_FAILED)
         return NULL;
-    newLarge->taken = 0;
     newLarge->length = length - sizeof(t_large);
     newLarge->next = NULL;
     return newLarge;

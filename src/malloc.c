@@ -3,8 +3,16 @@
 
 t_env s_env = {NULL, NULL, NULL};
 
+void    *get_large_ptr(t_large *large)
+{
+    while(large)
+    {
+        large = large->next;
+    };
+    return large + sizeof(t_large);
+};
+
 void    *malloc(size_t size) {
-    ft_printf("MALLOC: %d\n", size);
     if(!size)
         return NULL;
     if(size <= TINY)
@@ -18,9 +26,13 @@ void    *malloc(size_t size) {
             s_env.small = create_container(SMALL * BLOCKS_LENGTH, "SMALL");
         return allocate_tiny_and_small(s_env.small);
     }
-    if(!s_env.large) {
-        ft_printf("CREATE NEW LARGE\n");
+    if(!s_env.large)
+    {
         s_env.large = create_large(size);
+        if(!s_env.large)
+            return NULL;
+        return s_env.large + sizeof(t_large);
     }
-    return allocate_large(s_env.large, size);
-}
+    s_env.large = allocate_large(s_env.large, size);
+    return get_large_ptr(s_env.large);
+};

@@ -17,8 +17,7 @@ t_large *add_new_large(t_large *large, size_t size)
     t_large *newLarge;
 
     newLarge = create_large(size);
-    newLarge->taken = 1;
-    return newLarge + sizeof(t_large);
+    return newLarge;
 };
 
 void    *allocate_tiny_and_small(t_container *container)
@@ -47,18 +46,12 @@ void    *allocate_tiny_and_small(t_container *container)
 void    *allocate_large(t_large *large, size_t size)
 {
     t_large *newPtr;
+    t_large *tmp;
+
+    tmp = large;
     while(large->next)
-    {
-        if(large->taken == 0)
-        {
-           ft_printf("DIDNT ADD NEW LARGE\n");
-            large->taken = 1;
-            return (void *)large + sizeof(t_large);
-        };
         large = large->next;
-    }
-    ft_printf("ADD NEW LARGE\n");
     newPtr = add_new_large(large, size);
     large->next = newPtr;
-    return newPtr;
+    return tmp;
 };
