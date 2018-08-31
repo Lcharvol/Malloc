@@ -5,5 +5,10 @@ a.out
 test.c
 test0.c
 test1.c
+test2.c
+test3.c
 test0
 test1
+test2
+test3
+.obj

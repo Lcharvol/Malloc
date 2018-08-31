@@ -5,10 +5,8 @@ t_env s_env = {NULL, NULL, NULL};
 
 void    *get_large_ptr(t_large *large)
 {
-    while(large)
-    {
+    while(large->next)
         large = large->next;
-    };
     return large + sizeof(t_large);
 };
 
@@ -29,8 +27,6 @@ void    *malloc(size_t size) {
     if(!s_env.large)
     {
         s_env.large = create_large(size);
-        if(!s_env.large)
-            return NULL;
         return s_env.large + sizeof(t_large);
     }
     s_env.large = allocate_large(s_env.large, size);
