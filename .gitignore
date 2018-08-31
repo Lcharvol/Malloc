@@ -7,8 +7,12 @@ test0.c
 test1.c
 test2.c
 test3.c
+test4.c
+test5.c
 test0
 test1
 test2
 test3
+test5
+test4
 .obj

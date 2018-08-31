@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <sys/mman.h>
 #include "../libft/includes/libft.h"
+#include <errno.h>
 
 # define                TINY 16
 # define                SMALL 4096
