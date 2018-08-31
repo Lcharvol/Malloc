@@ -10,7 +10,21 @@ void    *get_large_ptr(t_large *large)
     return large + sizeof(t_large);
 };
 
-void    *malloc(size_t size) {
+int get_strunc_length(t_large *container)
+{
+    int length;
+
+    length = 0;
+    while(container)
+    {
+        length +=1;
+        container = container ->next;
+    };
+    return length;
+};
+
+void    *malloc(size_t size)
+{
     if(!size)
         return NULL;
     if(size <= TINY)

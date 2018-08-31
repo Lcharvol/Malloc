@@ -8,8 +8,11 @@ int                 is_large_ptr(void *ptr)
     pos = 0;
     while(tmp)
     {
-        if((tmp + 1) == ptr)
+        if((tmp + sizeof(t_large)) == ptr)
+        {
+            s_env.large = tmp;
             return pos;
+        }
         tmp = tmp->next;
         pos++;
     };

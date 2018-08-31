@@ -28,7 +28,8 @@ void                    *realloc(void *ptr, size_t size)
     {
         if((size < s_env.large[ptrPos].length) & (size > SMALL))
             return ptr;
-        tmp = ft_memcpy(malloc(size), ptr, size);
+        tmp = malloc(size + 1);
+        tmp = ft_memcpy(tmp, ptr, ft_strlen(ptr));
         free_large(ptrPos, ptr);
         return tmp;
     };
