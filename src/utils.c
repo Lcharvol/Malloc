@@ -1,25 +1,25 @@
-# include "../includes/prototypes.h"
+# include "../includes/malloc.h"
 
 int                 is_large_ptr(void *ptr)
 {
     int             pos;
-    t_large         *tmp = s_env.large;
+    t_large         *tmp = g_env.large;
 
     pos = 0;
     while(tmp)
     {
         if((tmp + sizeof(t_large)) == ptr)
         {
-            s_env.large = tmp;
+            g_env.large = tmp;
             return pos;
-        }
+        };
         tmp = tmp->next;
         pos++;
     };
     if((tmp + 1) == ptr)
         return pos;
     return -1;
-};
+}
 
 int             get_ptr_pos_in_container(void *ptr, t_container *container)
 {
@@ -42,7 +42,7 @@ int             get_ptr_pos_in_container(void *ptr, t_container *container)
         tmp = tmp->next;
     };
     return -1;
-};
+}
 
 int             is_empty_container(t_container *container)
 {
@@ -58,7 +58,7 @@ int             is_empty_container(t_container *container)
         i++;
     };
     return isEmpty;
-};
+}
 
 t_container       *free_empty_container(t_container *container)
 {
@@ -82,4 +82,4 @@ t_container       *free_empty_container(t_container *container)
         container = container->next;
     };
     return tmp;
-};
+}

@@ -1,5 +1,5 @@
 
-# include "../includes/prototypes.h"
+# include "../includes/malloc.h"
 
 void    print_blocks_mem(t_container *container)
 {
@@ -17,7 +17,7 @@ void    print_blocks_mem(t_container *container)
         };
         i++;
     };
-};
+}
 
 void    print_container_mem(t_container *container)
 {
@@ -27,7 +27,7 @@ void    print_container_mem(t_container *container)
         print_blocks_mem(container);
         container = container->next;
     };
-};
+}
 
 void    print_large_mem(t_large *large)
 {
@@ -38,10 +38,10 @@ void    print_large_mem(t_large *large)
         ft_printf("%p : \e[32m%d octets \e[00m\n", (void *)large + sizeof(t_large) + large->length, large->length);
         large = large->next;
     };
-};
+}
 
 void    show_alloc_mem() {
-    t_env       *env = &s_env;
+    t_env       *env = &g_env;
 
     if(env->tiny)
         print_container_mem(env->tiny);
@@ -56,4 +56,4 @@ void    show_alloc_mem() {
     else
         ft_putstr("\n\e[35mLARGE\e[0m : NULL\n");
     print_alloc_summ(env);
-};
+}

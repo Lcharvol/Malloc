@@ -1,4 +1,4 @@
-# include "../includes/prototypes.h"
+# include "../includes/malloc.h"
 
 t_container   *create_container(size_t length, char *name)
 {
@@ -14,7 +14,7 @@ t_container   *create_container(size_t length, char *name)
     newContainer->length = length - sizeof(t_container);
     newContainer->next = NULL;
     return newContainer;
-};
+}
 
 t_large  *create_large(size_t length)
 {

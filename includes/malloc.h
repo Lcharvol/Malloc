@@ -45,8 +45,6 @@ typedef struct			s_env
 	t_large				*large;
 }						t_env;
 
-extern t_env			g_env;
-
 void					free(void *ptr);
 void					*malloc(size_t size);
 void					*realloc(void *ptr, size_t size);
@@ -67,4 +65,6 @@ t_large					*create_large(size_t length);
 
 t_container				*create_container(size_t length, char *name);
 t_container				*free_empty_container(t_container *container);
+
+extern t_env			g_env;
 #endif

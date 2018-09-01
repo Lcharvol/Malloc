@@ -1,5 +1,5 @@
 
-# include "../includes/prototypes.h"
+# include "../includes/malloc.h"
 
 void    print_blocks_content(t_container *container)
 {
@@ -29,7 +29,7 @@ void    print_container_content(t_container *container)
         print_blocks_content(container);
         container = container->next;
     };
-};
+}
 
 void    print_large_content(t_large *large)
 {
@@ -39,11 +39,11 @@ void    print_large_content(t_large *large)
         large = large->next;
     };
     ft_printf("LARGE: %p\n%s\n", large, large + 1);
-};
+}
 
 void show_alloc_content()
 {
-    t_env       *env = &s_env;
+    t_env       *env = &g_env;
 
     if(env->tiny)
         print_container_content(env->tiny);
@@ -60,4 +60,4 @@ void show_alloc_content()
     else
         ft_putstr("LARGE : NULL");
     ft_putchar('\n');
-};
+}

@@ -1,4 +1,4 @@
-# include "../includes/prototypes.h"
+# include "../includes/malloc.h"
 
 int     get_container_alloc_summ(t_container *container, size_t blockSize)
 {
@@ -18,7 +18,7 @@ int     get_container_alloc_summ(t_container *container, size_t blockSize)
         container = container->next;
     };
     return summ;
-};
+}
 
 int     get_large_alloc_summ(t_large *large)
 {
@@ -31,7 +31,7 @@ int     get_large_alloc_summ(t_large *large)
         large = large->next;
     };
     return summ;
-};
+}
 
 void    print_alloc_summ(t_env *env)
 {
@@ -40,4 +40,4 @@ void    print_alloc_summ(t_env *env)
     summ = get_container_alloc_summ(env->tiny, TINY)
         + get_container_alloc_summ(env->small, SMALL) + get_large_alloc_summ(env->large);
     ft_printf("\n\e[35mTotal\e[0m : \e[32m%d octets\e[00m\n", summ);
-};
+}

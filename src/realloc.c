@@ -1,4 +1,4 @@
-# include "../includes/prototypes.h"
+# include "../includes/malloc.h"
 
 void                    *realloc_if_allocated(void *ptr, t_container *container, size_t blockSize, size_t size)
 {
@@ -16,7 +16,7 @@ void                    *realloc_if_allocated(void *ptr, t_container *container,
         return ptr;
     }
     return NULL;
-};
+}
 
 void                    *realloc(void *ptr, size_t size)
 {
@@ -28,17 +28,17 @@ void                    *realloc(void *ptr, size_t size)
         return malloc(size);
     if((ptrPos = is_large_ptr(ptr)) != -1)
     {
-        if((size < s_env.large[ptrPos].length) & (size > SMALL))
+        if((size < g_env.large[ptrPos].length) & (size > SMALL))
             return ptr;
         tmp = malloc(size + 1);
         tmp = ft_memcpy(tmp, ptr, ft_strlen(ptr));
         free_large(ptrPos, ptr);
         return tmp;
     };
-    if((ptr = realloc_if_allocated(ptr, s_env.tiny, TINY, size)) != NULL)
+    if((ptr = realloc_if_allocated(ptr, g_env.tiny, TINY, size)) != NULL)
         return ptr;
-    if((ptr = realloc_if_allocated(ptr, s_env.small, SMALL, size)) != NULL)
+    if((ptr = realloc_if_allocated(ptr, g_env.small, SMALL, size)) != NULL)
         return ptr;
     errno = ENOENT;
     return malloc(size);
-};
+}

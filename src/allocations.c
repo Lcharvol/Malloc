@@ -1,4 +1,4 @@
-# include "../includes/prototypes.h"
+# include "../includes/malloc.h"
 
 void    *allocate_tiny_and_small(t_container *container)
 {
@@ -25,7 +25,7 @@ void    *allocate_tiny_and_small(t_container *container)
         container = container->next;
     };
     return NULL;
-};
+}
 
 void    *allocate_large(t_large *large, size_t size)
 {
@@ -38,4 +38,4 @@ void    *allocate_large(t_large *large, size_t size)
     newPtr = create_large(size);
     large->next = newPtr;
     return tmp;
-};
+}
