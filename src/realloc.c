@@ -40,5 +40,5 @@ void                    *realloc(void *ptr, size_t size)
     if((ptr = realloc_if_allocated(ptr, s_env.small, SMALL, size)) != NULL)
         return ptr;
     errno = ENOENT;
-    return NULL;
+    return malloc(size);
 };

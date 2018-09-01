@@ -7,8 +7,8 @@
 #include "../libft/includes/libft.h"
 #include <errno.h>
 
-# define                TINY 16
-# define                SMALL 4096
+# define                TINY 32
+# define                SMALL 1024
 
 # define                BLOCKS_LENGTH 128
 
