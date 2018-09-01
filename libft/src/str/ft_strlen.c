@@ -6,21 +6,21 @@
 /*   By: lcharvol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 22:46:31 by lcharvol          #+#    #+#             */
-/*   Updated: 2016/11/09 23:51:05 by lcharvol         ###   ########.fr       */
+/*   Updated: 2018/09/01 18:22:24 by lcharvol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_strlen(const char *str)
+size_t		ft_strlen(const char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
-};
+}
 
 size_t		ft_wstrlen(const wchar_t *s)
 {

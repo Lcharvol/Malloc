@@ -6,13 +6,13 @@
 /*   By: lcharvol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 10:45:40 by lcharvol          #+#    #+#             */
-/*   Updated: 2016/11/11 16:32:04 by lcharvol         ###   ########.fr       */
+/*   Updated: 2018/09/01 18:24:54 by lcharvol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-int		*map(int *tab)
+int	*map(int *tab)
 {
-	return tab;
+	return (tab);
 }
