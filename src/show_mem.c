@@ -4,16 +4,16 @@
 void    print_blocks_mem(t_container *container)
 {
     int i;
-    int blockSize;
+    int block_size;
 
     i = 0;
-    blockSize = ft_strcmp(container->name, "TINY") == 0 ? TINY : SMALL; 
+    block_size = ft_strcmp(container->name, "TINY") == 0 ? TINY : SMALL; 
     while(i < BLOCKS_LENGTH)
     {
         if(container->blocks[i] != 0)
         {
-            ft_printf(" %p \e[02m- \e[0m", (void *)container + (i * blockSize) + sizeof(t_container));
-            ft_printf("%p : \e[32m %d octets \e[00m\n", (void *)container + (i * TINY) + sizeof(t_container) + blockSize, blockSize);
+            ft_printf(" %p \e[02m- \e[0m", (void *)container + (i * block_size) + sizeof(t_container));
+            ft_printf("%p : \e[32m %d octets \e[00m\n", (void *)container + (i * TINY) + sizeof(t_container) + block_size, block_size);
         };
         i++;
     };

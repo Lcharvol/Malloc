@@ -24,18 +24,18 @@ int                 is_large_ptr(void *ptr)
 int             get_ptr_pos_in_container(void *ptr, t_container *container)
 {
     int             i;
-    int             blockSize;
+    int             block_size;
     t_container     *tmp = container;
 
     if(!container)
         return -1;
-    blockSize = ft_strcmp(container->name, "TINY") == 0 ? TINY : SMALL; 
+    block_size = ft_strcmp(container->name, "TINY") == 0 ? TINY : SMALL; 
     i = 0;
     while(tmp)
     {
         while(i < BLOCKS_LENGTH)
         {
-            if((void *)tmp + sizeof(t_container) + (i * blockSize) == ptr)
+            if((void *)tmp + sizeof(t_container) + (i * block_size) == ptr)
                 return i;
             i++;
         };

@@ -1,6 +1,6 @@
 # include "../includes/malloc.h"
 
-int     get_container_alloc_summ(t_container *container, size_t blockSize)
+int     get_container_alloc_summ(t_container *container, size_t block_size)
 {
     int i;
     int summ;
@@ -12,7 +12,7 @@ int     get_container_alloc_summ(t_container *container, size_t blockSize)
         while(i < BLOCKS_LENGTH)
         {
             if(container->blocks[i] != 0)
-                summ += blockSize;
+                summ += block_size;
             i++;
         };
         container = container->next;
