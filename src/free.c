@@ -62,6 +62,7 @@ void			free_large(int pos, void *ptr)
 
 void			free(void *ptr)
 {
+	ft_printf("FREE\n");
 	int			large_pos;
 
 	if ((large_pos = is_large_ptr(ptr)) != -1)

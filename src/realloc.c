@@ -6,7 +6,7 @@
 /*   By: lcharvol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 16:23:50 by lcharvol          #+#    #+#             */
-/*   Updated: 2018/09/01 16:28:21 by lcharvol         ###   ########.fr       */
+/*   Updated: 2018/09/01 19:54:59 by lcharvol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void					*realloc_if_allocated(void *ptr, t_container *container,
 	int					ptr_pos;
 	void				*tmp;
 
-	if ((ptr_pos = get_ptr_pos_in_container(ptr, container)) != -1)
+	if ((ptr_pos = get_ptr_pos_in_container(ptr, container)) > 0)
 	{
 		if (size > block_size)
 		{
@@ -31,12 +31,20 @@ void					*realloc_if_allocated(void *ptr, t_container *container,
 	return (NULL);
 }
 
+int						can_realloc_ptr(void *ptr, t_container *container)
+{
+	if (get_ptr_pos_in_container(ptr, container) == -2)
+		return (-1);
+	return (0);
+}
+
 void					*realloc(void *ptr, size_t size)
 {
 	int					ptr_pos;
 	void				*tmp;
 
 	ptr_pos = 0;
+	ft_printf("REALLOC PTR: %p\n", ptr);
 	if (ptr == NULL)
 		return (malloc(size));
 	if ((ptr_pos = is_large_ptr(ptr)) != -1)
@@ -48,10 +56,11 @@ void					*realloc(void *ptr, size_t size)
 		free_large(ptr_pos, ptr);
 		return (tmp);
 	}
+	if((can_realloc_ptr(ptr, g_env.tiny) == -1) | (can_realloc_ptr(ptr, g_env.small) == -1))
+		return (NULL);
 	if ((ptr = realloc_if_allocated(ptr, g_env.tiny, TINY, size)) != NULL)
 		return (ptr);
 	if ((ptr = realloc_if_allocated(ptr, g_env.small, SMALL, size)) != NULL)
 		return (ptr);
-	errno = ENOENT;
 	return (malloc(size));
 }
