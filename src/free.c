@@ -8,7 +8,7 @@ void    delete_ptr_in_container(int ptrPos, t_container *container)
 
     i = 0;
     tmp = container;
-    blockSize = ft_strcmp(container->containerName, "TINY") == 0 ? TINY : SMALL; 
+    blockSize = ft_strcmp(container->name, "TINY") == 0 ? TINY : SMALL; 
     while(container)
     {
         while(i < BLOCKS_LENGTH)

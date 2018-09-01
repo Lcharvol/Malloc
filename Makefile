@@ -24,7 +24,7 @@ SRC =	malloc.c\
 
 OBJ =	$(SRC:%.c=$(OBJ_DIR)/%.o)
 
-INC =	prototypes.h
+INC =	malloc.h
 
 INCLUDE =	$(INC:%.h=$(INC_DIR)/%.h)
 

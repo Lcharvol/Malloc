@@ -10,7 +10,7 @@ t_container   *create_container(size_t length, char *name)
         getpagesize()) * getpagesize() + getpagesize();
     if((newContainer = mmap(0, length, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0)) == MAP_FAILED)
         return NULL;
-    newContainer->containerName = name;
+    newContainer->name = name;
     newContainer->length = length - sizeof(t_container);
     newContainer->next = NULL;
     return newContainer;

@@ -1,7 +1,7 @@
 
 # include "../includes/prototypes.h"
 
-t_env s_env = {NULL, NULL, NULL};
+t_env g_env = {NULL, NULL, NULL};
 
 void    *get_large_ptr(t_large *large)
 {
@@ -29,20 +29,20 @@ void    *malloc(size_t size)
         return NULL;
     if(size <= TINY)
     {
-        if(!s_env.tiny)
-            s_env.tiny = create_container(TINY * BLOCKS_LENGTH, "TINY");
-        return allocate_tiny_and_small(s_env.tiny);
+        if(!g_env.tiny)
+            g_env.tiny = create_container(TINY * BLOCKS_LENGTH, "TINY");
+        return allocate_tiny_and_small(g_env.tiny);
     }
     if(size <= SMALL) {
-        if(!s_env.small)
-            s_env.small = create_container(SMALL * BLOCKS_LENGTH, "SMALL");
-        return allocate_tiny_and_small(s_env.small);
+        if(!g_env.small)
+            g_env.small = create_container(SMALL * BLOCKS_LENGTH, "SMALL");
+        return allocate_tiny_and_small(g_env.small);
     }
-    if(!s_env.large)
+    if(!g_env.large)
     {
-        s_env.large = create_large(size);
-        return s_env.large + sizeof(t_large);
+        g_env.large = create_large(size);
+        return g_env.large + sizeof(t_large);
     }
-    s_env.large = allocate_large(s_env.large, size);
-    return get_large_ptr(s_env.large);
+    g_env.large = allocate_large(g_env.large, size);
+    return get_large_ptr(g_env.large);
 };

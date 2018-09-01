@@ -29,7 +29,7 @@ int             get_ptr_pos_in_container(void *ptr, t_container *container)
 
     if(!container)
         return -1;
-    blockSize = ft_strcmp(container->containerName, "TINY") == 0 ? TINY : SMALL; 
+    blockSize = ft_strcmp(container->name, "TINY") == 0 ? TINY : SMALL; 
     i = 0;
     while(tmp)
     {

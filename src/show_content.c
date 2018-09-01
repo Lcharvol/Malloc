@@ -23,7 +23,7 @@ void    print_container_content(t_container *container)
         int i;
 
         i = 0;
-        ft_putstr(container->containerName);
+        ft_putstr(container->name);
         ft_putstr(": ");
         ft_printf("%p\n", container);
         print_blocks_content(container);

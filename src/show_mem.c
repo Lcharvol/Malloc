@@ -7,7 +7,7 @@ void    print_blocks_mem(t_container *container)
     int blockSize;
 
     i = 0;
-    blockSize = ft_strcmp(container->containerName, "TINY") == 0 ? TINY : SMALL; 
+    blockSize = ft_strcmp(container->name, "TINY") == 0 ? TINY : SMALL; 
     while(i < BLOCKS_LENGTH)
     {
         if(container->blocks[i] != 0)
@@ -23,7 +23,7 @@ void    print_container_mem(t_container *container)
 {
     while(container)
     {
-        ft_printf("\n\e[35m%s : \e[0m%p\n\n", container->containerName, container);
+        ft_printf("\n\e[35m%s : \e[0m%p\n\n", container->name, container);
         print_blocks_mem(container);
         container = container->next;
     };
