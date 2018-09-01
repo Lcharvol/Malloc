@@ -1,43 +1,56 @@
-# include "../includes/malloc.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_alloc_summ.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcharvol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/01 17:48:02 by lcharvol          #+#    #+#             */
+/*   Updated: 2018/09/01 17:51:13 by lcharvol         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int     get_container_alloc_summ(t_container *container, size_t block_size)
+#include "../includes/malloc.h"
+
+int		get_container_alloc_summ(t_container *container, size_t block_size)
 {
-    int i;
-    int summ;
+	int	i;
+	int	summ;
 
-    summ = 0;
-    while(container)
-    {
-        i = 0;
-        while(i < BLOCKS_LENGTH)
-        {
-            if(container->blocks[i] != 0)
-                summ += block_size;
-            i++;
-        };
-        container = container->next;
-    };
-    return summ;
+	summ = 0;
+	while (container)
+	{
+		i = 0;
+		while (i < BLOCKS_LENGTH)
+		{
+			if (container->blocks[i] != 0)
+				summ += block_size;
+			i++;
+		}
+		container = container->next;
+	}
+	return (summ);
 }
 
-int     get_large_alloc_summ(t_large *large)
+int		get_large_alloc_summ(t_large *large)
 {
-    int summ;
+	int	summ;
 
-    summ = 0;
-    while(large)
-    {
-        summ += large->length;
-        large = large->next;
-    };
-    return summ;
+	summ = 0;
+	while (large)
+	{
+		summ += large->length;
+		large = large->next;
+	}
+	return (summ);
 }
 
-void    print_alloc_summ(t_env *env)
+void	print_alloc_summ(t_env *env)
 {
-    int summ;
+	int	summ;
 
-    summ = get_container_alloc_summ(env->tiny, TINY)
-        + get_container_alloc_summ(env->small, SMALL) + get_large_alloc_summ(env->large);
-    ft_printf("\n\e[35mTotal\e[0m : \e[32m%d octets\e[00m\n", summ);
+	summ = get_container_alloc_summ(env->tiny, TINY) +
+		get_container_alloc_summ(env->small, SMALL) +
+		get_large_alloc_summ(env->large);
+	ft_printf("\n\e[35mTotal\e[0m : \e[32m%d octets\e[00m\n", summ);
 }
