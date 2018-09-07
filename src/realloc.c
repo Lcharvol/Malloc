@@ -6,7 +6,7 @@
 /*   By: lcharvol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 16:23:50 by lcharvol          #+#    #+#             */
-/*   Updated: 2018/09/05 17:00:17 by lcharvol         ###   ########.fr       */
+/*   Updated: 2018/09/07 23:08:47 by lcharvol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int						can_realloc_ptr(void *ptr, t_container *container)
 	t_container *tmp;
 
 	tmp = container;
-	while(container)
+	while (container)
 	{
 		if (get_ptr_pos_in_container(ptr, container) == -2)
 			return (-1);
@@ -63,7 +63,8 @@ void					*realloc(void *ptr, size_t size)
 		free_large(ptr_pos, ptr);
 		return (tmp);
 	}
-	if((can_realloc_ptr(ptr, g_env.tiny) == -1) | (can_realloc_ptr(ptr, g_env.small) == -1))
+	if ((can_realloc_ptr(ptr, g_env.tiny) == -1) | (can_realloc_ptr(ptr,
+					g_env.small) == -1))
 		return (NULL);
 	if ((ptr = realloc_if_allocated(ptr, g_env.tiny, TINY, size)) != NULL)
 		return (ptr);
