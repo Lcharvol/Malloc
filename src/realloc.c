@@ -6,7 +6,7 @@
 /*   By: lcharvol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 16:23:50 by lcharvol          #+#    #+#             */
-/*   Updated: 2018/09/01 19:54:59 by lcharvol         ###   ########.fr       */
+/*   Updated: 2018/09/05 17:00:17 by lcharvol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,16 @@ void					*realloc_if_allocated(void *ptr, t_container *container,
 
 int						can_realloc_ptr(void *ptr, t_container *container)
 {
-	if (get_ptr_pos_in_container(ptr, container) == -2)
-		return (-1);
+	t_container *tmp;
+
+	tmp = container;
+	while(container)
+	{
+		if (get_ptr_pos_in_container(ptr, container) == -2)
+			return (-1);
+		container = container->next;
+	}
+	container = tmp;
 	return (0);
 }
 
@@ -44,7 +52,6 @@ void					*realloc(void *ptr, size_t size)
 	void				*tmp;
 
 	ptr_pos = 0;
-	ft_printf("REALLOC PTR: %p\n", ptr);
 	if (ptr == NULL)
 		return (malloc(size));
 	if ((ptr_pos = is_large_ptr(ptr)) != -1)

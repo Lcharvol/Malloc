@@ -6,7 +6,7 @@
 /*   By: lcharvol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 18:07:14 by lcharvol          #+#    #+#             */
-/*   Updated: 2018/09/01 19:58:42 by lcharvol         ###   ########.fr       */
+/*   Updated: 2018/09/07 22:54:11 by lcharvol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,11 @@ int				get_ptr_pos_in_container(void *ptr, t_container *container)
 	{
 		while (i < BLOCKS_LENGTH)
 		{
-			ft_printf("(void *)tmp + sizeof(t_container) + (i * block_size): %p\n", (void *)tmp + sizeof(t_container) + (i * block_size));
-			ft_printf("ptr: %p\n", &ptr);
-			if((((void *)tmp + sizeof(t_container) + (i * block_size)) > ptr)
-				& (((void *)tmp + sizeof(t_container) + ((i + 1) * block_size)) < ptr))
-			{
-				ft_printf("REALLOC SHOULD RETURN NULL\n");
-				return (-1);
-			}
+			ft_printf("ptr: %llx\n", ptr);
+			ft_printf("cnt: %llx\n", (void *)tmp + sizeof(t_container) + (i * block_size));
+			if((((void *)tmp + sizeof(t_container) + (i * block_size)) < ptr)
+				& (((void *)tmp + sizeof(t_container) + ((i + 1) * block_size)) > ptr))
+				return (-2);
 			if ((void *)tmp + sizeof(t_container) + (i * block_size) == ptr)
 				return (i);
 			i++;

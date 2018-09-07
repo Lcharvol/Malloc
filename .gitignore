@@ -2,6 +2,7 @@
 .DS_Store?
 .vscode
 a.out
+tests/
 test.c
 test0.c
 test1.c
